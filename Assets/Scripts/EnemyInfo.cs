@@ -12,6 +12,8 @@ public class EnemyInfo : MonoBehaviour {
     [SerializeField]
     private int pointValue; //point value for defeating this enemy
     [SerializeField]
+    private float timeToDeathAfterHit; //time between dying and being destroyed
+    [SerializeField]
     private GameManager gameManager; //References the scene's GameManager script
 
     //local variables
@@ -42,7 +44,7 @@ public class EnemyInfo : MonoBehaviour {
             enemyCollider.enabled = false; //disables the collider
             //TODO: Insert animation code
             gameManager.Score += pointValue; //adds the enemy's point value to the total score
-            Destroy(this.gameObject, 3); //destroys the enemy after a short time
+            Destroy(this.gameObject, timeToDeathAfterHit); //destroys the enemy after a short time
         }
     }
 
