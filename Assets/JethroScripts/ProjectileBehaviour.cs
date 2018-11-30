@@ -23,23 +23,12 @@ public class ProjectileBehaviour : MonoBehaviour
     // When a projectile is instantiated:
     private void Start()
     {
-        // Is this the first instance of the object?
-        if (FindObjectsOfType<ProjectileBehaviour>().Length == 1)
-        {
-            // If so, set it as the prefab to instantiate from.
-            projectilePrefab = gameObject;
-        }
-        else
-        {
-            // Else, apply the initial velocity values for the projectile.
+        // Get the rigidbody component on this object.
+        body = transform.GetComponent<Rigidbody2D>();
 
-            // Get the rigidbody component on this object.
-            body = transform.GetComponent<Rigidbody2D>();
-
-            // Apply the forces for this object to move.
-            body.AddForce(Vector2.up * launchSpeed);
-            body.AddTorque(spinSpeed);
-        }
+        // Apply the forces for this object to move.
+        body.AddForce(Vector2.up * launchSpeed);
+        body.AddTorque(spinSpeed);
     }
 
     // Called when the paper hits a customer.

@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114278971419003948}
   - component: {fileID: 61319708899031504}
   - component: {fileID: 50756958307262272}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c10cb8d5839e97b469380c20de389c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchSpeed: 250
+  launchSpeed: 400
   spinSpeed: 80
 --- !u!212 &212354823301915498
 SpriteRenderer:
