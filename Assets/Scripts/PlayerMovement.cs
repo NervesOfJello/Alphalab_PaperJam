@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour {
     private float horizontalInput; //input value taken from the horizontal input axis [Control stick + Keyboard]
     private Rigidbody2D PlayerRigidbody; //player rigidbody for physics calculation
 
+    //animation variables
+    private bool isFacingRight;
+
 	// Use this for initialization
 	void Start () 
 	{
