@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 20564522}
   - component: {fileID: 20564521}
   - component: {fileID: 20564523}
+  - component: {fileID: 20564524}
   m_Layer: 0
   m_Name: Salesperson
   m_TagString: Untagged
@@ -182,7 +183,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 20564520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.5, z: 0}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -199,6 +200,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa4b791ca4451f945a639c303e7ff72e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 15
+  movementConstraint: 5
+--- !u!50 &20564524
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 20564520}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 0
+  m_Constraints: 6
 --- !u!1 &408493236
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +233,6 @@ GameObject:
   - component: {fileID: 408493239}
   - component: {fileID: 408493238}
   - component: {fileID: 408493237}
-  - component: {fileID: 408493241}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -281,17 +303,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &408493241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 408493236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ab24a65e66ac14e851f21fe28e2009, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerTransform: {fileID: 20564522}
-  xOffset: 0
-  yOffset: -3
