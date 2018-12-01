@@ -42,6 +42,7 @@ class MovingAgent
         this._unityGhost.Mass = 5f;
         this._unityGhost.MaxForce = 0.5f;
         this._unityGhost.Direction = new Vector2(0, 0);
+
         this._homeLoc = HomeLocation;
 
     }

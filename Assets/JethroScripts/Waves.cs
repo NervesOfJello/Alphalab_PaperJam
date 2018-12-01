@@ -78,7 +78,12 @@ public class Waves : MonoBehaviour
 
                     for (int i = 0; i < groupSize; i++)
                     {
-                        currentEnemies.Add(Instantiate(StageManager.manager.smallEnemyPrefab, StageManager.manager.allLocations[spawnPosition].position, Quaternion.identity));
+                        var obj = Instantiate(StageManager.manager.smallEnemyPrefab,
+                            StageManager.manager.allLocations[spawnPosition].position, Quaternion.identity);
+
+                        obj.GetComponent<EnemyInfo>().SetHomeLoc(StageManager.manager.allLocations[spawnPosition].position);
+
+                        currentEnemies.Add(obj);
                     }
                 }
 

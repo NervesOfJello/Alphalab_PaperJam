@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum EnemyState { NONE, MOVING, DYING, DEAD, SCORE }
+enum EnemyState { NONE, MOVING, DYING, DYINGAGAIN, DEAD, SCORE }
 public class EnemyInfo : MonoBehaviour {
 
     //editor-exposed fields
@@ -23,7 +23,7 @@ public class EnemyInfo : MonoBehaviour {
     //find the game manager
     private void Awake()
     {
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>(); //finds the gamemanager and sets its reference on awake
+        //gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>(); //finds the gamemanager and sets its reference on awake
     }
 
     //Reference of Basic AI code
@@ -39,11 +39,14 @@ public class EnemyInfo : MonoBehaviour {
     public Vector2 Location;
     public Vector2 Heading;
 
+    private Vector2 _homeLoc;
+
 
     // Use this for initialization
     void Start () 
 	{
-        this._agent = new MovingAgent(this, SteeringBehaviors.PathFollow, new Vector2(0,0));
+        this._agent = new MovingAgent(this, SteeringBehaviors.PathFollow, this._homeLoc);
+        this.Location = this._homeLoc;
         enemyCollider = this.GetComponent<BoxCollider2D>(); //initalizes the collider
         GrabNodes();
         this._behaviors = SteeringBehaviors.PathFollow;
@@ -93,4 +96,8 @@ public class EnemyInfo : MonoBehaviour {
         }
     }
 
+    internal void SetHomeLoc(Vector3 position)
+    {
+        this._homeLoc = position;
+    }
 }
