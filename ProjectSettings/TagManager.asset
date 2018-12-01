@@ -46,11 +46,20 @@ TagManager:
   - name: Background
     uniqueID: 930504341
     locked: 0
-  - name: Enemies
-    uniqueID: 844571767
-    locked: 0
   - name: Player
     uniqueID: 3569085061
+    locked: 0
+  - name: Objects (behind of cubicles)
+    uniqueID: 2186718993
+    locked: 0
+  - name: Walls
+    uniqueID: 4115280549
+    locked: 0
+  - name: Objects(in front of Cubicles)
+    uniqueID: 1968594591
+    locked: 0
+  - name: Enemies
+    uniqueID: 844571767
     locked: 0
   - name: UI
     uniqueID: 1666256933
