@@ -17,11 +17,16 @@ public class ShootFunctionality : MonoBehaviour {
     // Records the last time that a projectile was fired.
     private float lastShootTime = 0;
 
+    // Animator component
     private Animator playerAnimator;
+
+    //Audio Component
+    private AudioSource throwAudioSource;
 
     private void Start()
     {
-        playerAnimator = GetComponent<Animator>();
+        playerAnimator = GetComponent<Animator>(); // initialize animator component
+        throwAudioSource = GetComponent<AudioSource>(); // initialize audio source component
     }
 
     // Update is called once per frame
@@ -35,6 +40,7 @@ public class ShootFunctionality : MonoBehaviour {
             {
                 //start the throwing animation
                 playerAnimator.SetTrigger("Throw");
+                throwAudioSource.Play(); // plays throw sound
 
                 // Instantiate a new projectile from the one that is offscreen.
                 // TODO reference the player position when instantiating this object.
