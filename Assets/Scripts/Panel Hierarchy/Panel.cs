@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PanelScreen { Start, Instruction, Gameplay, Gameover }
+public enum PanelScreen { Start, Credit, Instruction, Gameplay, Gameover}
 public abstract class Panel {
     public static PanelScreen CurrentScreen = PanelScreen.Start;
     public CanvasRenderer panel { get; set; }
