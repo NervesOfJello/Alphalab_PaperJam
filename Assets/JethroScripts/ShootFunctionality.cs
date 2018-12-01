@@ -11,15 +11,22 @@ public class ShootFunctionality : MonoBehaviour {
 
     [SerializeField]
     private ProjectileBehaviour projectilePrefab;
+    [SerializeField]
+    private Transform paperSpawn;
 
     // Records the last time that a projectile was fired.
     private float lastShootTime = 0;
 
+    // Animator component
     private Animator playerAnimator;
+
+    //Audio Component
+    private AudioSource throwAudioSource;
 
     private void Start()
     {
-        playerAnimator = GetComponent<Animator>();
+        playerAnimator = GetComponent<Animator>(); // initialize animator component
+        throwAudioSource = GetComponent<AudioSource>(); // initialize audio source component
     }
 
     // Update is called once per frame
@@ -33,10 +40,11 @@ public class ShootFunctionality : MonoBehaviour {
             {
                 //start the throwing animation
                 playerAnimator.SetTrigger("Throw");
+                throwAudioSource.Play(); // plays throw sound
 
                 // Instantiate a new projectile from the one that is offscreen.
                 // TODO reference the player position when instantiating this object.
-                Instantiate(projectilePrefab.gameObject, transform.position, Quaternion.identity);
+                Instantiate(projectilePrefab.gameObject, paperSpawn.position, Quaternion.identity);
 
                 // Update the last shoot time.
                 lastShootTime = Time.time;

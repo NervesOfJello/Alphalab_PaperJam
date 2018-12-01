@@ -15,11 +15,16 @@ public class EnemyInfo : MonoBehaviour {
     private int pointValue; //point value for defeating this enemy
     [SerializeField]
     private float timeToDeathAfterHit; //time between dying and being destroyed
-    [SerializeField]
-    private GameManager gameManager; //References the scene's GameManager script
 
     //local variables
     private BoxCollider2D enemyCollider; //references the object's collider
+    private GameManager gameManager; //References the scene's GameManager script
+
+    //find the game manager
+    private void Awake()
+    {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>(); //finds the gamemanager and sets its reference on awake
+    }
 
     //Reference of Basic AI code
     public SteeringBehaviors _behaviors;
@@ -33,6 +38,7 @@ public class EnemyInfo : MonoBehaviour {
     public Vector2 Direction;
     public Vector2 Location;
     public Vector2 Heading;
+
 
     // Use this for initialization
     void Start () 
