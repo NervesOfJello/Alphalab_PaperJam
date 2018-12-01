@@ -395,11 +395,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  smallEnemyPrefab: {fileID: 1505632071577312, guid: 15c2dcf5dd10d7644bb39075d6953cee,
+  smallEnemyPrefab: {fileID: 1616188624720820, guid: f9513b8c73dff5848a2fef3b12f4afff,
     type: 2}
-  mediumEnemyPrefab: {fileID: 1477725243939282, guid: 6f0bff248a75a6941958a6962c5e6b67,
+  mediumEnemyPrefab: {fileID: 1923906898802512, guid: 848696eb12c93ec4587982fcebfd2e94,
     type: 2}
-  largeEnemyPrefab: {fileID: 1397275780642494, guid: 4ebf9d35d44dd8a47b572b46348320fd,
+  largeEnemyPrefab: {fileID: 1670066167554034, guid: f97164b1eeb3c6841a86acd10ab48c7d,
     type: 2}
   normalStages:
   - {fileID: 1556836332288336}

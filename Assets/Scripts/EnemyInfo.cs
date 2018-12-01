@@ -3,14 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum EnemyState { NONE, MOVING, DYING, DYINGAGAIN, DEAD, SCORE }
 public class EnemyInfo : MonoBehaviour {
 
     //editor-exposed fields
     [SerializeField]
     private float moveSpeed; //multiplicative speed of movement
     [SerializeField]
-    private int hitsToDefeat; //how many papers it takes to finish this enemy
+    public int hitsToDefeat; //how many papers it takes to finish this enemy
     [SerializeField]
     private int pointValue; //point value for defeating this enemy
     [SerializeField]
@@ -19,11 +18,12 @@ public class EnemyInfo : MonoBehaviour {
     //local variables
     private BoxCollider2D enemyCollider; //references the object's collider
     private GameManager gameManager; //References the scene's GameManager script
+    private AudioSource enemyAudioSource; //references the object's audio source
 
     //find the game manager
     private void Awake()
     {
-        //gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>(); //finds the gamemanager and sets its reference on awake
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>(); //finds the gamemanager and sets its reference on awake
     }
 
     //Reference of Basic AI code
@@ -45,6 +45,7 @@ public class EnemyInfo : MonoBehaviour {
     // Use this for initialization
     void Start () 
 	{
+        enemyAudioSource = GetComponent<AudioSource>(); //initializes the enemy's audio source
         this._agent = new MovingAgent(this, SteeringBehaviors.PathFollow, this._homeLoc);
         this.Location = this._homeLoc;
         enemyCollider = this.GetComponent<BoxCollider2D>(); //initalizes the collider
@@ -54,6 +55,7 @@ public class EnemyInfo : MonoBehaviour {
 
     [SerializeField]
     private GameObject parentNode;
+
     private void GrabNodes()
     {
         //Debug.Log(parentNode.GetComponentsInChildren<Transform>()[0].position);
@@ -92,6 +94,7 @@ public class EnemyInfo : MonoBehaviour {
             enemyCollider.enabled = false; //disables the collider
             //TODO: Insert animation code
             gameManager.Score += pointValue; //adds the enemy's point value to the total score
+            gameManager.PlayKaChingSound(); //plays the ka-ching sound from the gamemanager
             Destroy(this.gameObject, timeToDeathAfterHit); //destroys the enemy after a short time
         }
     }
