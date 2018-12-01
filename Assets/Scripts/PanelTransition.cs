@@ -41,7 +41,7 @@ public class PanelTransition : MonoBehaviour {
                 }
                 break;
             case PanelScreen.Credit:
-                instruction.Update();
+                credit.Update();
                 if (Panel.CurrentScreen == PanelScreen.Instruction)
                 {
                     StartCoroutine(AfterAnimationPlay());
@@ -55,6 +55,7 @@ public class PanelTransition : MonoBehaviour {
                 }
                 break;
         }
+        Debug.Log(Panel.CurrentScreen);
     }
     IEnumerator AfterAnimationPlay()
     {
