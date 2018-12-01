@@ -1,29 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public enum LivesStatus { Idle, Reset }
 [RequireComponent(typeof(BoxCollider2D))]
 public class LivesLost : MonoBehaviour {
     public static LivesStatus state = LivesStatus.Idle;
+    public Image[] Lives = new Image[3]; 
+    
     [SerializeField]
     private string TagNameForEnemies = "enemyexit";
-    [SerializeField]
-    private int livesToStartWith = 3;
-    [HideInInspector]
-    public static int Lives;
-    [SerializeField]
-    private int livesToTake = 1;
     private void Start()
     {
-        Lives = livesToStartWith;
+        
     }
     private void Update()
     {
         if (state == LivesStatus.Reset)
         {
-            Lives = livesToStartWith;
+            for (int i = 0; i < Lives.Length; i++)
+            {
+                Lives[i].gameObject.SetActive(true);
+            }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -36,14 +36,13 @@ public class LivesLost : MonoBehaviour {
     }
     private void TakeAwayLife()
     {
-        Lives -= livesToTake;
-        if (Lives < 0)
+        for (int i = 0; i < Lives.Length; i++)
         {
-            Lives = 0;
-        }
-        if (Lives == 0)
-        {
-            SceneManager.LoadScene("GameOver");
+            if (Lives[i].gameObject.activeInHierarchy)
+            {
+                Lives[i].gameObject.SetActive(false);
+                break;
+            }
         }
         
     }
