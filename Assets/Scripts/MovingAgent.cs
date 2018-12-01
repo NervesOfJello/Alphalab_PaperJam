@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 //used for the differents types of behaviors the Moving Agent will enact
-public enum SteeringBehaviors { None, Seek, Arrive, Pursuit, Wander}
+public enum SteeringBehaviors { None, Seek, Arrive, Pursuit, Wander, PathFollow}
 
 //used for the Arrive calculations
 enum Deceleration { Fast = 1, Normal, Slow}
@@ -50,12 +50,26 @@ class MovingAgent
     {
         otherGhosts = ghosts;
     }
-
-    #region SteeringBehaviors
-
-    private Vector2 BehaviorSwitch()
+    private int currentNode;
+    List<Transform> nodes = new List<Transform>();
+    internal void PassNodes(Transform[] transform)
     {
-        this._unityGhost.gameObject.tag = "Ghost";
+        for(int i = 0; i < transform.Length; i++)
+        {
+            if (i != 0 )
+            {
+                nodes.Add(transform[i]);
+            }
+        }
+
+        currentNode = nodes.Count-1; //keeping track of the current node path
+
+    }
+
+#region SteeringBehaviors
+
+private Vector2 BehaviorSwitch()
+    { 
 
         switch (this._unityGhost._behaviors)
         {
@@ -63,8 +77,6 @@ class MovingAgent
                 break;
 
             case SteeringBehaviors.Seek:
-                this._unityGhost.gameObject.tag = "Untagged";
-                this._homeLoc = this._player.transform.position * -1;
                 _steeringForce = Seek(_homeLoc);
                 break;
 
@@ -81,6 +93,10 @@ class MovingAgent
 
             case SteeringBehaviors.Wander:
                 _steeringForce = Separation() + Wander();
+                break;
+
+            case SteeringBehaviors.PathFollow:
+                _steeringForce = PathFollowing();
                 break;
 
             default:
@@ -165,7 +181,7 @@ class MovingAgent
             return Seek(evader.transform.position);
         }
 
-        //float LookAheadTime = (ToEvader.magnitude / (this._unityGhost.MaxSpeed + _playerMovement.Speed()));
+        float LookAheadTime = (ToEvader.magnitude / (this._unityGhost.MaxSpeed)); //+ _playerMovement.Speed()));
         return Seek(evader.transform.position + (Vector3)(_playerRB2D.velocity * LookAheadTime));
     }
 
@@ -193,10 +209,29 @@ class MovingAgent
     }
 
     //https://gamedevelopment.tutsplus.com/tutorials/understanding-steering-behaviors-path-following--gamedev-8769
+    private int distToNode;
     private Vector2 PathFollowing()
     {
+        Vector2 target = new Vector2();
 
-        return Arrive(new Vector2(0, 0), Deceleration.Normal);
+        if (this.nodes != null)
+        {
+            //get the first/next node position
+            target = nodes[currentNode].localPosition;
+
+            //Debug.Log(Vector2.Distance(this._unityGhost.Location, target));
+
+            if (Vector2.Distance(this._unityGhost.Location, target) <= 1.0f)
+            {
+                currentNode--;
+                if (currentNode <= -1)
+                {
+                    currentNode = 0;
+                }
+            }
+        }
+
+        return Seek(target);
     }
     #endregion
 

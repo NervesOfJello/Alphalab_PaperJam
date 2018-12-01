@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+enum EnemyState { NONE, MOVING, DYING, DEAD, SCORE }
 public class EnemyInfo : MonoBehaviour {
 
     //editor-exposed fields
@@ -35,12 +37,23 @@ public class EnemyInfo : MonoBehaviour {
     // Use this for initialization
     void Start () 
 	{
+        this._agent = new MovingAgent(this, SteeringBehaviors.PathFollow, new Vector2(0,0));
         enemyCollider = this.GetComponent<BoxCollider2D>(); //initalizes the collider
+        GrabNodes();
+        this._behaviors = SteeringBehaviors.PathFollow;
 	}
+
+    [SerializeField]
+    private GameObject parentNode;
+    private void GrabNodes()
+    {
+        //Debug.Log(parentNode.GetComponentsInChildren<Transform>()[0].position);
+        //get the list of children and their locations
+        this._agent.PassNodes(parentNode.GetComponentsInChildren<Transform>());
+    }
 
     private void FixedUpdate()
     {
-
         //Updates AI's calculations
         _agent.UpdateForces();
 
