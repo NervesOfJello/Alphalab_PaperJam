@@ -6,15 +6,15 @@ public class GameManager : MonoBehaviour {
     
     public int Score;
 
+    private AudioSource cashAudioSource;
 	// Use this for initialization
 	void Start () 
 	{
+        cashAudioSource = GetComponent<AudioSource>();
+	}
 
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-		
-	}
+    public void PlayKaChingSound()
+    {
+        cashAudioSource.Play();
+    }
 }
