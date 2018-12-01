@@ -14,7 +14,7 @@ public class GamePanel : Panel {
     public override void Update()
     {
         //TODO: Must include something that will cause a transition to GameOver
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (LivesLost.Lives == 0)
         {
             CurrentScreen = PanelScreen.Gameover;
             animator.Play("FadeOut");
