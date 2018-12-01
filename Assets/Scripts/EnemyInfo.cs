@@ -3,14 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum EnemyState { NONE, MOVING, DYING, DYINGAGAIN, DEAD, SCORE }
 public class EnemyInfo : MonoBehaviour {
 
     //editor-exposed fields
     [SerializeField]
     private float moveSpeed; //multiplicative speed of movement
     [SerializeField]
-    private int hitsToDefeat; //how many papers it takes to finish this enemy
+    public int hitsToDefeat; //how many papers it takes to finish this enemy
     [SerializeField]
     private int pointValue; //point value for defeating this enemy
     [SerializeField]
@@ -23,7 +22,7 @@ public class EnemyInfo : MonoBehaviour {
     //find the game manager
     private void Awake()
     {
-        //gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>(); //finds the gamemanager and sets its reference on awake
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>(); //finds the gamemanager and sets its reference on awake
     }
 
     //Reference of Basic AI code
@@ -54,6 +53,7 @@ public class EnemyInfo : MonoBehaviour {
 
     [SerializeField]
     private GameObject parentNode;
+
     private void GrabNodes()
     {
         //Debug.Log(parentNode.GetComponentsInChildren<Transform>()[0].position);
