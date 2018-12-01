@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4011476040948378}
   - component: {fileID: 114846009506642076}
-  - component: {fileID: 114655986779677012}
   m_Layer: 0
   m_Name: Stage2
   m_TagString: Untagged
@@ -37,7 +36,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4110677299694362}
   - component: {fileID: 114571658026658156}
-  - component: {fileID: 114790084744233148}
   m_Layer: 0
   m_Name: Stage3
   m_TagString: Untagged
@@ -54,7 +52,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4968807748674516}
   - component: {fileID: 114585561878396430}
-  - component: {fileID: 114016455429958958}
   m_Layer: 0
   m_Name: Stage4
   m_TagString: Untagged
@@ -71,7 +68,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4810784276582866}
   - component: {fileID: 114076919695221980}
-  - component: {fileID: 114308698659063628}
   m_Layer: 0
   m_Name: Endless2
   m_TagString: Untagged
@@ -88,7 +84,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4737253724564780}
   - component: {fileID: 114264220359375850}
-  - component: {fileID: 114536901036947926}
   m_Layer: 0
   m_Name: Endless3
   m_TagString: Untagged
@@ -105,7 +100,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4176391286442372}
   - component: {fileID: 114761494263676290}
-  - component: {fileID: 114445134188868438}
   m_Layer: 0
   m_Name: Stage1
   m_TagString: Untagged
@@ -122,7 +116,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4116046850902664}
   - component: {fileID: 114758086885257282}
-  - component: {fileID: 114214976727996892}
   m_Layer: 0
   m_Name: Endless1
   m_TagString: Untagged
@@ -218,7 +211,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1984688851074286}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9832306, y: 1.1033409, z: -0.052734375}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4176391286442372}
@@ -257,24 +250,6 @@ Transform:
   m_Father: {fileID: 4762942472643044}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114016455429958958
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1318229971662508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1047d684042ba342a37562395aac98b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waveNumber: 1
-  smallEnemyGroups:
-  - {x: 1, y: 0}
-  mediumEnemyGroups:
-  - {x: 1, y: 0}
-  largeEnemyGroups:
-  - {x: 1, y: 0}
 --- !u!114 &114076919695221980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -287,30 +262,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveNumber: 0
-  smallEnemyGroups:
-  - {x: 1, y: 0}
+  smallEnemyGroups: []
   mediumEnemyGroups:
   - {x: 1, y: 0}
+  - {x: 1, y: 2}
   largeEnemyGroups:
-  - {x: 1, y: 0}
---- !u!114 &114214976727996892
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1590755241034952}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1047d684042ba342a37562395aac98b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waveNumber: 1
-  smallEnemyGroups:
-  - {x: 1, y: 0}
-  mediumEnemyGroups:
-  - {x: 1, y: 0}
-  largeEnemyGroups:
-  - {x: 1, y: 0}
+  - {x: 1, y: 1}
+  - {x: 1, y: 3}
 --- !u!114 &114264220359375850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -325,62 +283,11 @@ MonoBehaviour:
   waveNumber: 0
   smallEnemyGroups:
   - {x: 1, y: 0}
-  mediumEnemyGroups:
-  - {x: 1, y: 0}
-  largeEnemyGroups:
-  - {x: 1, y: 0}
---- !u!114 &114308698659063628
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1327179247940918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1047d684042ba342a37562395aac98b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waveNumber: 1
-  smallEnemyGroups:
-  - {x: 1, y: 0}
-  mediumEnemyGroups:
-  - {x: 1, y: 0}
-  largeEnemyGroups:
-  - {x: 1, y: 0}
---- !u!114 &114445134188868438
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1556836332288336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1047d684042ba342a37562395aac98b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waveNumber: 1
-  smallEnemyGroups:
+  - {x: 1, y: 1}
+  - {x: 1, y: 2}
   - {x: 1, y: 3}
   mediumEnemyGroups: []
   largeEnemyGroups: []
---- !u!114 &114536901036947926
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1433602583834276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1047d684042ba342a37562395aac98b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waveNumber: 1
-  smallEnemyGroups:
-  - {x: 1, y: 0}
-  mediumEnemyGroups:
-  - {x: 1, y: 0}
-  largeEnemyGroups:
-  - {x: 1, y: 0}
 --- !u!114 &114571658026658156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -394,11 +301,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveNumber: 0
   smallEnemyGroups:
-  - {x: 1, y: 0}
+  - {x: 1, y: 1}
   mediumEnemyGroups:
   - {x: 1, y: 0}
-  largeEnemyGroups:
-  - {x: 1, y: 0}
+  - {x: 1, y: 3}
+  largeEnemyGroups: []
 --- !u!114 &114585561878396430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -411,28 +318,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveNumber: 0
-  smallEnemyGroups:
-  - {x: 1, y: 0}
+  smallEnemyGroups: []
   mediumEnemyGroups:
   - {x: 1, y: 0}
-  largeEnemyGroups:
-  - {x: 1, y: 0}
---- !u!114 &114655986779677012
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1048379134759106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1047d684042ba342a37562395aac98b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waveNumber: 1
-  smallEnemyGroups:
-  - {x: 1, y: 2}
-  mediumEnemyGroups:
-  - {x: 1, y: 2}
+  - {x: 1, y: 3}
   largeEnemyGroups:
   - {x: 1, y: 2}
 --- !u!114 &114758086885257282
@@ -450,9 +339,10 @@ MonoBehaviour:
   smallEnemyGroups:
   - {x: 1, y: 0}
   mediumEnemyGroups:
-  - {x: 1, y: 0}
+  - {x: 1, y: 2}
   largeEnemyGroups:
-  - {x: 1, y: 0}
+  - {x: 1, y: 3}
+  - {x: 1, y: 1}
 --- !u!114 &114761494263676290
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -471,24 +361,6 @@ MonoBehaviour:
   - {x: 1, y: 3}
   mediumEnemyGroups: []
   largeEnemyGroups: []
---- !u!114 &114790084744233148
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1279569074847476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1047d684042ba342a37562395aac98b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waveNumber: 1
-  smallEnemyGroups:
-  - {x: 1, y: 0}
-  mediumEnemyGroups:
-  - {x: 1, y: 0}
-  largeEnemyGroups:
-  - {x: 1, y: 0}
 --- !u!114 &114846009506642076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -502,11 +374,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveNumber: 0
   smallEnemyGroups:
-  - {x: 1, y: 2}
+  - {x: 1, y: 0}
+  - {x: 1, y: 1}
   mediumEnemyGroups:
   - {x: 1, y: 2}
-  largeEnemyGroups:
-  - {x: 1, y: 2}
+  largeEnemyGroups: []
 --- !u!114 &114909679240942788
 MonoBehaviour:
   m_ObjectHideFlags: 1

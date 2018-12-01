@@ -48,6 +48,7 @@ public class StageManager : MonoBehaviour
     private void Start()
     {
         manager = this;
+        StartGame();
     }
 
     /// <summary>Moves onto the next stage, and deletes the old stage elements</summary>

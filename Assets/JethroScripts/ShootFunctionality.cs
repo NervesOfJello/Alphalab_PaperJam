@@ -11,6 +11,8 @@ public class ShootFunctionality : MonoBehaviour {
 
     [SerializeField]
     private ProjectileBehaviour projectilePrefab;
+    [SerializeField]
+    private Transform paperSpawn;
 
     // Records the last time that a projectile was fired.
     private float lastShootTime = 0;
@@ -36,7 +38,7 @@ public class ShootFunctionality : MonoBehaviour {
 
                 // Instantiate a new projectile from the one that is offscreen.
                 // TODO reference the player position when instantiating this object.
-                Instantiate(projectilePrefab.gameObject, transform.position, Quaternion.identity);
+                Instantiate(projectilePrefab.gameObject, paperSpawn.position, Quaternion.identity);
 
                 // Update the last shoot time.
                 lastShootTime = Time.time;
