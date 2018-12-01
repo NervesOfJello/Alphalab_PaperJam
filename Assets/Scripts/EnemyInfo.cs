@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+enum EnemyState { NONE, MOVING, DYING, DYINGAGAIN, DEAD, SCORE }
 public class EnemyInfo : MonoBehaviour {
 
     //editor-exposed fields
@@ -21,14 +23,55 @@ public class EnemyInfo : MonoBehaviour {
     //find the game manager
     private void Awake()
     {
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>(); //finds the gamemanager and sets its reference on awake
+        //gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>(); //finds the gamemanager and sets its reference on awake
     }
+
+    //Reference of Basic AI code
+    public SteeringBehaviors _behaviors;
+    private MovingAgent _agent;
+
+    //public accessors for the AI calculations
+    public float MaxSpeed;
+    public float MaxForce;
+    public float Mass;
+
+    public Vector2 Direction;
+    public Vector2 Location;
+    public Vector2 Heading;
+
+    private Vector2 _homeLoc;
+
 
     // Use this for initialization
     void Start () 
 	{
+        this._agent = new MovingAgent(this, SteeringBehaviors.PathFollow, this._homeLoc);
+        this.Location = this._homeLoc;
         enemyCollider = this.GetComponent<BoxCollider2D>(); //initalizes the collider
+        GrabNodes();
+        this._behaviors = SteeringBehaviors.PathFollow;
 	}
+
+    [SerializeField]
+    private GameObject parentNode;
+    private void GrabNodes()
+    {
+        //Debug.Log(parentNode.GetComponentsInChildren<Transform>()[0].position);
+        //get the list of children and their locations
+        this._agent.PassNodes(parentNode.GetComponentsInChildren<Transform>());
+    }
+
+    private void FixedUpdate()
+    {
+        //Updates AI's calculations
+        _agent.UpdateForces();
+
+        //Updates Heading as it is needed for AI calculations for next Update frame
+        this.Heading = this.Direction.normalized;
+
+        //Updates Location based on AI calculations
+        this.transform.position = this.Location;
+    }
 
     //when collided with
     private void OnCollisionEnter2D(Collision2D collision)
@@ -53,4 +96,8 @@ public class EnemyInfo : MonoBehaviour {
         }
     }
 
+    internal void SetHomeLoc(Vector3 position)
+    {
+        this._homeLoc = position;
+    }
 }
