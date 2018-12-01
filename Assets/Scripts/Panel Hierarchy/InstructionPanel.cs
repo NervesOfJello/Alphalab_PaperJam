@@ -19,7 +19,6 @@ public class InstructionPanel : Panel
         if (AnyJoyStickButtonPress())
         {
             CurrentScreen = PanelScreen.Gameplay;
-            //animator.Play("FadeOut");
         }
         
     }

@@ -20,7 +20,7 @@ public class StartPanel : Panel{
         if (AnyJoyStickButtonPress())
         {
             animator.Play("FadeOut");
-            CurrentScreen = PanelScreen.Instruction;
+            CurrentScreen = PanelScreen.Credit;
         }
     }
 }

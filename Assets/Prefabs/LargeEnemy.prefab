@@ -8,6 +8,7 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
@@ -24,6 +25,7 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 80b267c99e1168749b25e5c897be3fca,
         type: 3}
+
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1397275780642494}
@@ -41,7 +43,7 @@ GameObject:
   - component: {fileID: 61666251605758546}
   m_Layer: 0
   m_Name: LargeEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1397275780642494}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.133775, y: 3.9417458, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
