@@ -18,7 +18,7 @@ public class GameoverPanel : Panel {
         //TODO: What Scene comes after Game over?
         if (AnyJoyStickButtonPress())
         {
-            CurrentScreen = PanelScreen.Gameover;
+            CurrentScreen = PanelScreen.Gameplay;
             animator.Play("FadeOut");
         }
     }

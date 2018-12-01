@@ -37,26 +37,33 @@ public class PanelTransition : MonoBehaviour {
                 start.Update();
                 if (Panel.CurrentScreen == PanelScreen.Instruction)
                 {
-                    StartCoroutine(Example());
+                    StartCoroutine(AfterAnimationPlay());
                 }
                 break;
             case PanelScreen.Instruction:
                 instruction.Update();
                 if (Panel.CurrentScreen == PanelScreen.Gameplay)
                 {
-                    StartCoroutine(Example());
+                    StartCoroutine(AfterAnimationPlay());
                 }
                 break;
             case PanelScreen.Gameplay:
+                if (Panel.CurrentScreen == PanelScreen.Gameover)
+                {
+                    StartCoroutine(AfterAnimationPlay());
+                }
                 gameplay.Update();
                 break;
             case PanelScreen.Gameover:
+                if (Panel.CurrentScreen == PanelScreen.Gameplay)
+                {
+                    StartCoroutine(AfterAnimationPlay());
+                }
                 gameover.Update();
                 break;
         }
-        Debug.Log(Panel.CurrentScreen);
     }
-    IEnumerator Example()
+    IEnumerator AfterAnimationPlay()
     {
         switch (Panel.CurrentScreen)
         {
@@ -68,6 +75,8 @@ public class PanelTransition : MonoBehaviour {
                 break;
             case PanelScreen.Gameplay:
                 yield return new WaitForSeconds(instructionfadeOutInSeconds);
+                LivesLost.state = LivesStatus.Reset;
+                gameover.panel.gameObject.SetActive(false);
                 instruction.panel.gameObject.SetActive(false);
                 gameplay.panel.gameObject.SetActive(true);
                 gameplay.animator.Play("FadeIn");
@@ -78,10 +87,6 @@ public class PanelTransition : MonoBehaviour {
                 gameover.panel.gameObject.SetActive(true);
                 gameover.animator.Play("FadeIn");
                 break;
-            //case PanelScreen.Start:
-            //    yield return new WaitForSeconds(gameoverfadeOutInSeconds);
-            //    gameover.panel.gameObject.SetActive(false);
-            //    break;
 
         }
         
