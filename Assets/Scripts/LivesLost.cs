@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum LivesStatus { Idle, Reset }
 [RequireComponent(typeof(BoxCollider2D))]
@@ -39,6 +40,10 @@ public class LivesLost : MonoBehaviour {
         if (Lives < 0)
         {
             Lives = 0;
+        }
+        if (Lives == 0)
+        {
+            SceneManager.LoadScene("GameOver");
         }
         
     }
