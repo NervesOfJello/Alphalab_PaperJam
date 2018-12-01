@@ -32,6 +32,7 @@ public class ShootFunctionality : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
+
         // TODO Replace with GetButtonDown.
 		if (Input.GetButtonDown("Fire1"))
         {

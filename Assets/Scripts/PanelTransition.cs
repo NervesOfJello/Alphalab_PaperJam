@@ -1,15 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PanelTransition : MonoBehaviour {
     [SerializeField]
     private CanvasRenderer StartPanel, InstructionPanel, GameplayPanel, GameoverPanel;
+    [SerializeField]
+    private string sceneName; //name of the scene loaded after the instruction panel
     private float startfadeOutInSeconds = 1.4f, instructionfadeOutInSeconds = 1.4f, gameplayfadeOutInSeconds = 1.4f, gameoverfadeOutInSeconds = 1.4f;
     StartPanel start;
     InstructionPanel instruction;
     GamePanel gameplay;
     GameoverPanel gameover;
+
 	// Use this for initialization
 	void Start () {
         
@@ -75,11 +79,12 @@ public class PanelTransition : MonoBehaviour {
                 break;
             case PanelScreen.Gameplay:
                 yield return new WaitForSeconds(instructionfadeOutInSeconds);
-                LivesLost.state = LivesStatus.Reset;
-                gameover.panel.gameObject.SetActive(false);
-                instruction.panel.gameObject.SetActive(false);
-                gameplay.panel.gameObject.SetActive(true);
-                gameplay.animator.Play("FadeIn");
+                SceneManager.LoadScene(sceneName); //loads the game scene
+                //LivesLost.state = LivesStatus.Reset;
+                //gameover.panel.gameObject.SetActive(false);
+                //instruction.panel.gameObject.SetActive(false);
+                //gameplay.panel.gameObject.SetActive(true);
+                //gameplay.animator.Play("FadeIn");
                 break;
             case PanelScreen.Gameover:
                 yield return new WaitForSeconds(gameplayfadeOutInSeconds);
