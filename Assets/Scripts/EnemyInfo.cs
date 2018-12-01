@@ -19,11 +19,37 @@ public class EnemyInfo : MonoBehaviour {
     //local variables
     private BoxCollider2D enemyCollider; //references the object's collider
 
-	// Use this for initialization
-	void Start () 
+    //Reference of Basic AI code
+    public SteeringBehaviors _behaviors;
+    private MovingAgent _agent;
+
+    //public accessors for the AI calculations
+    public float MaxSpeed;
+    public float MaxForce;
+    public float Mass;
+
+    public Vector2 Direction;
+    public Vector2 Location;
+    public Vector2 Heading;
+
+    // Use this for initialization
+    void Start () 
 	{
         enemyCollider = this.GetComponent<BoxCollider2D>(); //initalizes the collider
 	}
+
+    private void FixedUpdate()
+    {
+
+        //Updates AI's calculations
+        _agent.UpdateForces();
+
+        //Updates Heading as it is needed for AI calculations for next Update frame
+        this.Heading = this.Direction.normalized;
+
+        //Updates Location based on AI calculations
+        this.transform.position = this.Location;
+    }
 
     //when collided with
     private void OnCollisionEnter2D(Collision2D collision)
