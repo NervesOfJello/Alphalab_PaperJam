@@ -49,9 +49,69 @@ public class EnemyInfo : MonoBehaviour {
         this._agent = new MovingAgent(this, SteeringBehaviors.PathFollow, this._homeLoc);
         this.Location = this._homeLoc;
         enemyCollider = this.GetComponent<BoxCollider2D>(); //initalizes the collider
+
+        FindRandomPath();
         GrabNodes();
         this._behaviors = SteeringBehaviors.PathFollow;
 	}
+
+    [SerializeField]
+    private List<GameObject> paths;
+    private void FindRandomPath()
+    {
+        float rand = UnityEngine.Random.Range(0, 100000);
+
+        if (rand < 10000)
+        {
+            this.parentNode = this.paths[0];
+        }
+        else if (rand < 20000)
+        {
+            this.parentNode = this.paths[1];
+
+        }
+        else if (rand < 30000)
+        {
+            this.parentNode = this.paths[2];
+
+        }
+        else if (rand < 40000)
+        {
+            this.parentNode = this.paths[3];
+
+        }
+        else if (rand < 50000)
+        {
+            this.parentNode = this.paths[4];
+
+        }
+        else if (rand < 60000)
+        {
+            this.parentNode = this.paths[5];
+
+        }
+        else if (rand < 70000)
+        {
+            this.parentNode = this.paths[6];
+
+        }
+        else if (rand < 80000)
+        {
+            this.parentNode = this.paths[7];
+
+        }
+        else if (rand < 90000)
+        {
+            this.parentNode = this.paths[8];
+
+        }
+        else if (rand < 100000)
+        {
+            this.parentNode = this.paths[9];
+
+        }
+
+    }
 
     [SerializeField]
     private GameObject parentNode;
