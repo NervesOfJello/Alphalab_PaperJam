@@ -6,18 +6,6 @@ using UnityEngine;
 // Then based on passed time, it spawns the waves
 public class Waves : MonoBehaviour
 {
-    // Prefabs used to instantiate the enemies.
-    [SerializeField]
-    private GameObject smallEnemyPrefab;
-    [SerializeField]
-    private GameObject mediumEnemyPrefab;
-    [SerializeField]
-    private GameObject largeEnemyPrefab;
-
-    // The locations that enemies can be spawned at.
-    [SerializeField]
-    private List<Transform> spawnLocations = new List<Transform>();
-
     // The waves for the current game.
     private List<Wave> gameWaves = new List<Wave>();
 
@@ -49,21 +37,9 @@ public class Waves : MonoBehaviour
         }
 	}
 
-    // Debug in the following section allows for testing kills with "k".
-    // DEBUG ONLY
-    int debugCounter = 0;
-
     // Update is called once per frame
     void Update ()
     {
-        // DEBUG ONLY
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Destroy(currentEnemies[debugCounter]);
-            Debug.Log("Current wave contains enemies: " + currentEnemies.Count);
-            debugCounter++;
-        }
-
         // Should the next wave be spawned?
         bool spawnNextWave = true;
         foreach (GameObject enemy in currentEnemies)
@@ -79,59 +55,66 @@ public class Waves : MonoBehaviour
         // Are there no enemies on screen? (Spawn the next wave).
         if (spawnNextWave)
         {
-            // DEBUG ONLY
-            debugCounter = 0;
 
-            // Clear the current enemies list:
-            currentEnemies.Clear();
-
-            // Spawn the small enemies for the next wave.
-            foreach (Vector2 group in gameWaves[currentWave].smallEnemyGroups)
+            // Are there no more waves remaining?
+            if (currentWave > gameWaves.Count - 1)
             {
-                // Get the group size as an int.
-                int groupSize = Mathf.Abs((int)group.x);
-
-                // Get the spawn position as an int.
-                int spawnPosition = Mathf.Abs((int)group.y);
-
-                for (int i = 0; i < groupSize; i++)
-                {
-                    currentEnemies.Add(Instantiate(smallEnemyPrefab, spawnLocations[spawnPosition].position, Quaternion.identity));
-                }
+                // If so, end this stage.
+                StageManager.manager.UpdateStage(this);
             }
-
-            // Spawn the medium enemies for the next wave.
-            foreach (Vector2 group in gameWaves[currentWave].mediumEnemyGroups)
+            else
             {
-                // Get the group size as an int.
-                int groupSize = Mathf.Abs((int)group.x);
+                // Clear the current enemies list:
+                currentEnemies.Clear();
 
-                // Get the spawn position as an int.
-                int spawnPosition = Mathf.Abs((int)group.y);
-
-                for (int i = 0; i < groupSize; i++)
+                // Spawn the small enemies for the next wave.
+                foreach (Vector2 group in gameWaves[currentWave].smallEnemyGroups)
                 {
-                    currentEnemies.Add(Instantiate(mediumEnemyPrefab, spawnLocations[spawnPosition].position, Quaternion.identity));
+                    // Get the group size as an int.
+                    int groupSize = Mathf.Abs((int)group.x);
+
+                    // Get the spawn position as an int.
+                    int spawnPosition = Mathf.Abs((int)group.y);
+
+                    for (int i = 0; i < groupSize; i++)
+                    {
+                        currentEnemies.Add(Instantiate(StageManager.manager.smallEnemyPrefab, StageManager.manager.allLocations[spawnPosition].position, Quaternion.identity));
+                    }
                 }
-            }
 
-            // Spawn the large enemies for the next wave.
-            foreach (Vector2 group in gameWaves[currentWave].largeEnemyGroups)
-            {
-                // Get the group size as an int.
-                int groupSize = Mathf.Abs((int)group.x);
-
-                // Get the spawn position as an int.
-                int spawnPosition = Mathf.Abs((int)group.y);
-
-                for (int i = 0; i < groupSize; i++)
+                // Spawn the medium enemies for the next wave.
+                foreach (Vector2 group in gameWaves[currentWave].mediumEnemyGroups)
                 {
-                    currentEnemies.Add(Instantiate(largeEnemyPrefab, spawnLocations[spawnPosition].position, Quaternion.identity));
-                }
-            }
+                    // Get the group size as an int.
+                    int groupSize = Mathf.Abs((int)group.x);
 
-            // Increment the current wave.
-            currentWave++;
+                    // Get the spawn position as an int.
+                    int spawnPosition = Mathf.Abs((int)group.y);
+
+                    for (int i = 0; i < groupSize; i++)
+                    {
+                        currentEnemies.Add(Instantiate(StageManager.manager.mediumEnemyPrefab, StageManager.manager.allLocations[spawnPosition].position, Quaternion.identity));
+                    }
+                }
+
+                // Spawn the large enemies for the next wave.
+                foreach (Vector2 group in gameWaves[currentWave].largeEnemyGroups)
+                {
+                    // Get the group size as an int.
+                    int groupSize = Mathf.Abs((int)group.x);
+
+                    // Get the spawn position as an int.
+                    int spawnPosition = Mathf.Abs((int)group.y);
+
+                    for (int i = 0; i < groupSize; i++)
+                    {
+                        currentEnemies.Add(Instantiate(StageManager.manager.largeEnemyPrefab, StageManager.manager.allLocations[spawnPosition].position, Quaternion.identity));
+                    }
+                }
+
+                // Increment the current wave.
+                currentWave++;
+            }
         }
 	}
 }
