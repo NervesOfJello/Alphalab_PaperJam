@@ -38,9 +38,9 @@ class MovingAgent
     public MovingAgent(EnemyInfo UNITYGHOST, SteeringBehaviors agentBehaviors, Vector2 HomeLocation)
     {
         this._unityGhost = UNITYGHOST;
-        this._unityGhost.MaxSpeed = 2.0f;
+        this._unityGhost.MaxSpeed = 4.0f;
         this._unityGhost.Mass = 5f;
-        this._unityGhost.MaxForce = 0.5f;
+        this._unityGhost.MaxForce = 0.75f;
         this._unityGhost.Direction = new Vector2(0, 0);
 
         this._homeLoc = HomeLocation;

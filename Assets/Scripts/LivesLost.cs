@@ -44,7 +44,7 @@ public class LivesLost : MonoBehaviour {
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.ToLower() == TagNameForEnemies.ToLower())
+        if (collision.gameObject.tag == TagNameForEnemies)
         {
             TakeAwayLife();
             Destroy(collision.gameObject);
